@@ -3,13 +3,13 @@
 ![Booksapp Screenshot](Page.png)
 
 ## Live Demo & API
-- **Site:** [https://lemon-pebble-088965b1e.1.azurestaticapps.net/](https://lemon-pebble-088965b1e.1.azurestaticapps.net/)
-- **Data API:** [https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books](https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books)
+- **Site:** <a href="https://lemon-pebble-088965b1e.1.azurestaticapps.net/" target="_blank">https://lemon-pebble-088965b1e.1.azurestaticapps.net/</a>
+- **Data API:** <a href="https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books" target="_blank">https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books</a>
 
 ## Overview
 This project demonstrates how to build a full-stack web app using Azure Static Web Apps, Blazor, Azure SQL, Data API Builder, and Azure OpenAI (DALL-E 3) for image generation. All steps leverage GitHub Copilot and GenAI tools for rapid, code-free development.
 
-**For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).**
+For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).
 ---
 
 ## Prerequisites
@@ -142,5 +142,18 @@ A web app made almost entirely with GenAI and Copilot, with minimal manual codin
 - Always validate builds before committing.
 - Use Copilot's suggestions, but review and test the generated code.
 For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).
+
+---
+
+## Useful Resources
+- <a href="https://openai.com/" target="_blank">OpenAI</a>
+- <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>
+- <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" target="_blank">Azure OpenAI Service</a>
+- <a href="https://learn.microsoft.com/en-us/azure/data-api-builder/" target="_blank">Azure Data API Builder</a>
+- <a href="https://learn.microsoft.com/en-us/azure/ai-services/" target="_blank">Azure AI & GenAI</a>
+- <a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a>
+- <a href="https://learn.microsoft.com/en-us/azure/static-web-apps/overview" target="_blank">Azure Static Web Apps</a>
+
+---
 
 Happy learning and building!
