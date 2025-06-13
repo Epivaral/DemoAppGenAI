@@ -1,5 +1,62 @@
 @page "/"
-@layout MainLayout
+@using Client.Models
+@inject HttpClient Http
 
-<h1>Hello, world!</h1>
-<p>Welcome to your Azure Static Web App using Blazor!</p>
+<h1>My Personal Book collection</h1>
+
+@if (books == null)
+{
+    <p>Loading...</p>
+}
+else if (!books.Any())
+{
+    <p>No books found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Read Status</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in books)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Genre</td>
+                    <td>@book.ReadStatus</td>
+                    <td>@book.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Book> books;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await Http.GetFromJsonAsync<ApiResponse>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
+            books = response?.value ?? new List<Book>();
+        }
+        catch
+        {
+            books = new List<Book>();
+        }
+    }
+
+    public class ApiResponse
+    {
+        public List<Book> value { get; set; }
+    }
+}
