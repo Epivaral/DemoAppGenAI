@@ -48,13 +48,17 @@ else
     private List<Book> books;
     private string errorMessage;
 
+    public class ApiResponse {
+        public List<Book> value { get; set; }
+    }
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            var response = await Http.GetStringAsync("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
-            errorMessage = $"Raw API response: {response}";
-            books = System.Text.Json.JsonSerializer.Deserialize<List<Book>>(response);
+            var response = await Http.GetFromJsonAsync<ApiResponse>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
+            books = response?.value ?? new List<Book>();
+            errorMessage = null;
         }
         catch (Exception ex)
         {
