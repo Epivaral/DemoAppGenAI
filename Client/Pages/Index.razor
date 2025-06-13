@@ -47,17 +47,11 @@ else
     {
         try
         {
-            var response = await Http.GetFromJsonAsync<ApiResponse>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
-            books = response?.value ?? new List<Book>();
+            books = await Http.GetFromJsonAsync<List<Book>>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
         }
         catch
         {
             books = new List<Book>();
         }
-    }
-
-    public class ApiResponse
-    {
-        public List<Book> value { get; set; }
     }
 }
