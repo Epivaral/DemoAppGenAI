@@ -22,6 +22,7 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>Cover</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Genre</th>
@@ -33,6 +34,9 @@ else
             @foreach (var book in books)
             {
                 <tr>
+                    <td>
+                        <img src="@($"images/{string.Join("_", book.Title.Split())}.png")" alt="@book.Title cover" style="max-width:80px;max-height:120px;" onerror="this.style.display='none'" />
+                    </td>
                     <td>@book.Title</td>
                     <td>@book.Author</td>
                     <td>@book.Genre</td>
