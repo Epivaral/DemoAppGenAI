@@ -143,6 +143,7 @@ Ask Copilot to update the Blazor table to display these images. If an image is m
 A web app made almost entirely with GenAI and Copilot, with minimal manual coding required!
 
 <a href="multimedia/intro.mp4" target="_blank">Bookstore Video (also made with GenAI)</a>
+
 ---
 
 ## Tips
@@ -150,7 +151,7 @@ A web app made almost entirely with GenAI and Copilot, with minimal manual codin
 - Use Copilot's suggestions, but review and test the generated code.
 For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).
 
----
+
 
 ## Useful Resources
 - <a href="https://openai.com/" target="_blank">OpenAI</a>
