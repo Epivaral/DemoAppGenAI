@@ -9,18 +9,14 @@
 - **Data API:** <a href="https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books" target="_blank">https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books</a>
 
 ## Overview
-This project showcases a full-stack web app built entirely with GenAI tools—no manual coding involved. Using Azure Static Web Apps, Blazor, Azure SQL, Data API Builder, and Azure OpenAI (DALL-E 3) for image generation, every stage—from database design to UI and API integration—was guided by GitHub Copilot and AI-powered workflows.
----
 
-<p align="center">
-  <video width="480" controls>
-    <source src="multimedia/intro.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
+This project showcases a full-stack web app built entirely with GenAI tools—no manual coding involved. Using Azure Static Web Apps, Blazor, Azure SQL, Data API Builder, and Azure OpenAI (DALL-E 3) for image generation, every stage—from database design to UI and API integration—was guided by GitHub Copilot and AI-powered workflows.
+
+
 
 
 For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).
+
 
 
 ## Prerequisites
@@ -146,7 +142,7 @@ Ask Copilot to update the Blazor table to display these images. If an image is m
 ## Final Result
 A web app made almost entirely with GenAI and Copilot, with minimal manual coding required!
 
-
+<a href="multimedia/intro.mp4" target="_blank">Bookstore Video (also made with GenAI)</a>
 ---
 
 ## Tips
