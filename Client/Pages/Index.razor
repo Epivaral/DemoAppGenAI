@@ -5,7 +5,11 @@
 
 <h1>My Personal Book collection</h1>
 
-@if (books == null)
+@if (errorMessage != null)
+{
+    <div style="color:red">@errorMessage</div>
+}
+else if (books == null)
 {
     <p>Loading...</p>
 }
@@ -42,15 +46,19 @@ else
 
 @code {
     private List<Book> books;
+    private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            books = await Http.GetFromJsonAsync<List<Book>>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
+            var response = await Http.GetStringAsync("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
+            errorMessage = $"Raw API response: {response}";
+            books = System.Text.Json.JsonSerializer.Deserialize<List<Book>>(response);
         }
-        catch
+        catch (Exception ex)
         {
+            errorMessage = ex.Message;
             books = new List<Book>();
         }
     }
