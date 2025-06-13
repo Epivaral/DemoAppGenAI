@@ -1,9 +1,15 @@
 # BooksApp Demo: GenAI, Azure Static Web Apps, Blazor, and Data API Builder
 
+![Booksapp Screenshot](Page.png)
+
+## Live Demo & API
+- **Site:** [https://lemon-pebble-088965b1e.1.azurestaticapps.net/](https://lemon-pebble-088965b1e.1.azurestaticapps.net/)
+- **Data API:** [https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books](https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books)
+
 ## Overview
 This project demonstrates how to build a full-stack web app using Azure Static Web Apps, Blazor, Azure SQL, Data API Builder, and Azure OpenAI (DALL-E 3) for image generation. All steps leverage GitHub Copilot and GenAI tools for rapid, code-free development.
 
-**For more details and a step-by-step Copilot chat log, see `CopilotPrompt.md`.**
+**For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).**
 ---
 
 ## Prerequisites
@@ -29,7 +35,8 @@ This project demonstrates how to build a full-stack web app using Azure Static W
 Ask ChatGPT for simple web app ideas. Example prompt:
 
 ```
-Give me ideas for a simple web app using static web apps in Azure, mostly for learning and teaching, a simple CRUD with just one table in Azure SQL DB
+Give me ideas for a simple web app using static web apps in Azure, mostly for learning and teaching, 
+a simple CRUD with just one table in Azure SQL DB
 ```
 
 Select a topic (e.g., Book List App) and define the table structure:
@@ -77,7 +84,8 @@ Update the Blazor app to fetch and display books from the API as a table. Exampl
 
 ```
 using the API we created, and is located at https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books
-can you please update Blazor App to display the books as a table, add a header that says "My Personal Book collection"
+can you please update Blazor App to display the books as a table, 
+add a header that says "My Personal Book collection"
 ```
 
 If you see deserialization or build errors, ask Copilot to fix them. Always validate with `dotnet build` before committing.
@@ -88,14 +96,21 @@ If you see deserialization or build errors, ask Copilot to fix them. Always vali
 Ask Copilot to update the CSS to match a reference image or your preferences. Example prompt:
 
 ```
-can you please update my website style to look like this picture, format the table and the background of the site, also format the header.
-Please do not change anything on how the api is called, as is working as expected, only update the style and colors
+can you please update my website style to look like this picture, 
+format the table and the background of the site, also format the header.
+Please do not change anything on how the api is called, as is working as expected, 
+only update the style and colors
 ```
 
 ---
 
 ### 7. Generate and Display Book Cover Images
-Use Azure OpenAI (DALL-E 3) to generate book covers. Create a Python script to iterate over all books and save images to the `images` folder. Example prompt:
+
+Use Azure OpenAI (DALL-E 3) to generate book covers using the playground.
+
+Create a Python script to iterate over all books and save images to the `images` folder. 
+
+Example prompt:
 
 ```
 Can you please update the file, so it can iterate over all books, in this api: https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books
@@ -120,13 +135,12 @@ Ask Copilot to update the Blazor table to display these images. If an image is m
 ## Final Result
 A web app made almost entirely with GenAI and Copilot, with minimal manual coding required!
 
-![Booksapp Screenshot](Page.png)
 
 ---
 
 ## Tips
 - Always validate builds before committing.
 - Use Copilot's suggestions, but review and test the generated code.
-- For more details and a step-by-step Copilot chat log, see `CopilotPrompt.md`.
+For more details and a step-by-step Copilot chat log, see [`CopilotPrompt.md`](CopilotPrompt.md).
 
 Happy learning and building!
