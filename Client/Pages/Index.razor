@@ -40,7 +40,9 @@ else
                     <td>@book.Title</td>
                     <td>@book.Author</td>
                     <td>@book.Genre</td>
-                    <td>@book.ReadStatus</td>
+                    <td>
+                        <input type="checkbox" disabled @checked="book.ReadStatus != null && book.ReadStatus.ToLower() == \"read\"" />
+                    </td>
                     <td>@book.Description</td>
                 </tr>
             }
