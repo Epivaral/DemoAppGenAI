@@ -5,6 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello World Blazor</title>
     <base href="/" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #2d3a4b;
+            margin-top: 40px;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 8px #fff;
+        }
+        .table {
+            margin: 40px auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 900px;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(44, 62, 80, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .table th, .table td {
+            padding: 16px 12px;
+            text-align: left;
+        }
+        .table th {
+            background: #2d3a4b;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .table tr:nth-child(even) {
+            background: #f3f6fa;
+        }
+        .table tr:hover {
+            background: #e1eaff;
+        }
+        @media (max-width: 600px) {
+            .table, .table thead, .table tbody, .table th, .table td, .table tr {
+                display: block;
+            }
+            .table th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .table td {
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                background: #fff;
+            }
+            .table td:before {
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                width: 45%;
+                white-space: nowrap;
+                font-weight: bold;
+                color: #2d3a4b;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="app">Loading...</div>
