@@ -11,7 +11,7 @@
 .cool-title {
     background: linear-gradient(90deg, #232526 0%, #414345 100%);
     color: #fff;
-    padding: 32px 0 32px 0;
+    padding: 0 0 32px 0; /* More top padding */
     margin-bottom: 24px;
     border-radius: 16px;
     text-align: center;
@@ -20,6 +20,33 @@
     letter-spacing: 2px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.15);
     text-shadow: 1px 2px 8px #000a;
+}
+.align-table-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 900px;
+    margin: 0 auto 12px auto;
+    gap: 16px;
+}
+.save-btn-dark {
+    background: #222b3a;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    min-width: 120px;
+    padding: 8px 24px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    transition: background 0.2s;
+}
+.save-btn-dark:disabled {
+    background: #444c5c;
+    color: #ccc;
+}
+.save-btn-dark:hover:not(:disabled) {
+    background: #2d3a4b;
 }
 </style>
 
@@ -42,8 +69,10 @@ else if (!books.Any())
 }
 else
 {
-    <label class="form-label">You can update the read status of the books below and click SAVE to apply changes.</label>
-    <button class="btn btn-primary mb-3" style="font-weight:bold; letter-spacing:1px; min-width:120px;" @onclick="SaveChanges" disabled="@isSaving">@((isSaving ? "Saving..." : "SAVE"))</button>
+    <div class="align-table-controls">
+        <label class="form-label mb-0">You can update the read status of the books below and click SAVE to apply changes.</label>
+        <button class="save-btn-dark" @onclick="SaveChanges" disabled="@isSaving">@((isSaving ? "Saving..." : "SAVE"))</button>
+    </div>
     <table class="table">
         <thead>
             <tr>
