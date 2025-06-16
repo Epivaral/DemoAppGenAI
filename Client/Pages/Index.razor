@@ -142,7 +142,7 @@ else
         errorMessage = null;
         try
         {
-            foreach (var book in books.Where(b => b.IsDirty))
+            foreach (var book in books)
             {
                 var url = $"https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books/BookID/{book.BookID}";
                 var bookData = new {
@@ -162,7 +162,6 @@ else
                     errorMessage = $"Failed to update BookID {book.BookID}: {response.ReasonPhrase}";
                     break;
                 }
-                book.IsDirty = false;
             }
         }
         catch (Exception ex)
