@@ -139,7 +139,8 @@ else
                     Author = book.Author,
                     Genre = book.Genre,
                     ReadStatus = book.ReadStatus,
-                    Description = book.Description
+                    Description = book.Description,
+                    BookID = book.BookID
                 };
                 var response = await Http.PutAsJsonAsync(url, bookData);
                 if (!response.IsSuccessStatusCode)
