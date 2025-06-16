@@ -179,8 +179,12 @@ else
             isChecked = b;
         else if (value is string s && bool.TryParse(s, out var parsed))
             isChecked = parsed;
-        books[index].ReadStatusBool = isChecked;
-        books[index].IsDirty = true;
+        // Only set IsDirty if the value actually changed
+        if (books[index].ReadStatusBool != isChecked)
+        {
+            books[index].ReadStatusBool = isChecked;
+            books[index].IsDirty = true;
+        }
         StateHasChanged();
     }
 }
