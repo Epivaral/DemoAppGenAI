@@ -56,19 +56,19 @@ else
             </tr>
         </thead>
         <tbody>
-            @for (int i = 0; i < books.Count; i++)
+            @foreach (var book in books)
             {
                 <tr>
                     <td>
-                        <img src="@($"images/{string.Join("_", books[i].Title.Split())}.png")" alt="@books[i].Title cover" style="max-width:80px;max-height:120px;" onerror="this.style.display='none'" />
+                        <img src="@($"images/{string.Join("_", book.Title.Split())}.png")" alt="@book.Title cover" style="max-width:80px;max-height:120px;" onerror="this.style.display='none'" />
                     </td>
-                    <td>@books[i].Title</td>
-                    <td>@books[i].Author</td>
-                    <td>@books[i].Genre</td>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Genre</td>
                     <td>
-                        <input type="checkbox" @bind="books[i].ReadStatusBool" />
+                        <input type="checkbox" @bind="book.ReadStatusBool" />
                     </td>
-                    <td>@books[i].Description</td>
+                    <td>@book.Description</td>
                 </tr>
             }
         </tbody>
