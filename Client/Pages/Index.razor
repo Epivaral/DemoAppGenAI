@@ -3,7 +3,22 @@
 @using System.Net.Http.Json
 @inject HttpClient Http
 
-<h1>My Personal Book collection</h1>
+<h1 class="cool-title">My Personal Book Collection</h1>
+<style>
+.cool-title {
+    background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    color: #fff;
+    padding: 32px 0 32px 0;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    text-shadow: 1px 2px 8px #000a;
+}
+</style>
 
 @if (errorMessage != null)
 {
@@ -48,7 +63,7 @@ else
                     <td>@books[i].Author</td>
                     <td>@books[i].Genre</td>
                     <td>
-                        <input type="checkbox" @bind="books[i].ReadStatusBool" />
+                        <input type="checkbox" checked="@books[i].ReadStatusBool" @onchange="(e) => OnReadStatusChanged(i, e.Value)" />
                     </td>
                     <td>@books[i].Description</td>
                 </tr>
@@ -149,5 +164,14 @@ else
     private async Task ReloadBooks()
     {
         await LoadBooksAsync();
+    }
+
+    private void OnReadStatusChanged(int index, object value)
+    {
+        if (books == null || index < 0 || index >= books.Count) return;
+        bool isChecked = value is bool b && b;
+        books[index].ReadStatusBool = isChecked;
+        books[index].IsDirty = true;
+        StateHasChanged();
     }
 }
