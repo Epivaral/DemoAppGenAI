@@ -24,6 +24,8 @@ else if (!books.Any())
 }
 else
 {
+    <label class="form-label">You can update the read status of the books below and click SAVE to apply changes.</label>
+    <button class="btn btn-success mb-2" @onclick="SaveChanges" disabled="@isSaving">@((isSaving ? "Saving..." : "SAVE"))</button>
     <table class="table">
         <thead>
             <tr>
@@ -36,19 +38,19 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var book in books)
+            @for (int i = 0; i < books.Count; i++)
             {
                 <tr>
                     <td>
-                        <img src="@($"images/{string.Join("_", book.Title.Split())}.png")" alt="@book.Title cover" style="max-width:80px;max-height:120px;" onerror="this.style.display='none'" />
+                        <img src="@($"images/{string.Join("_", books[i].Title.Split())}.png")" alt="@books[i].Title cover" style="max-width:80px;max-height:120px;" onerror="this.style.display='none'" />
                     </td>
-                    <td>@book.Title</td>
-                    <td>@book.Author</td>
-                    <td>@book.Genre</td>
+                    <td>@books[i].Title</td>
+                    <td>@books[i].Author</td>
+                    <td>@books[i].Genre</td>
                     <td>
-                        <input type="checkbox" disabled checked="@IsRead(book.ReadStatus)" />
+                        <input type="checkbox" @bind="books[i].ReadStatusBool" />
                     </td>
-                    <td>@book.Description</td>
+                    <td>@books[i].Description</td>
                 </tr>
             }
         </tbody>
@@ -56,18 +58,23 @@ else
 }
 
 @code {
-    private List<Book> books;
+    private List<BookEditable> books;
     private string errorMessage;
     private bool isLoading = true;
+    private bool isSaving = false;
 
     public class ApiResponse {
         public List<Book> value { get; set; }
     }
 
-    private bool IsRead(string readStatus)
+    public class BookEditable : Book
     {
-        return !string.IsNullOrWhiteSpace(readStatus) &&
-               readStatus.Trim().Equals("read", StringComparison.OrdinalIgnoreCase);
+        public bool ReadStatusBool
+        {
+            get => !string.IsNullOrWhiteSpace(ReadStatus) && ReadStatus.Trim().Equals("read", StringComparison.OrdinalIgnoreCase);
+            set => ReadStatus = value ? "Read" : "Unread";
+        }
+        public bool IsDirty { get; set; } = false;
     }
 
     protected override async Task OnInitializedAsync()
@@ -82,7 +89,14 @@ else
         try
         {
             var response = await Http.GetFromJsonAsync<ApiResponse>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
-            books = response?.value ?? new List<Book>();
+            books = response?.value?.Select(b => new BookEditable {
+                BookID = b.BookID,
+                Title = b.Title,
+                Author = b.Author,
+                Genre = b.Genre,
+                ReadStatus = b.ReadStatus,
+                Description = b.Description
+            }).ToList() ?? new List<BookEditable>();
         }
         catch (Exception ex)
         {
@@ -92,6 +106,43 @@ else
         finally
         {
             isLoading = false;
+        }
+    }
+
+    private async Task SaveChanges()
+    {
+        isSaving = true;
+        errorMessage = null;
+        try
+        {
+            foreach (var book in books)
+            {
+                // Always update for demo; optimize by tracking IsDirty if needed
+                var url = $"https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books/BookID/{book.BookID}";
+                var bookData = new Book
+                {
+                    BookID = book.BookID,
+                    Title = book.Title,
+                    Author = book.Author,
+                    Genre = book.Genre,
+                    ReadStatus = book.ReadStatus,
+                    Description = book.Description
+                };
+                var response = await Http.PutAsJsonAsync(url, bookData);
+                if (!response.IsSuccessStatusCode)
+                {
+                    errorMessage = $"Failed to update BookID {book.BookID}: {response.ReasonPhrase}";
+                    break;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to save changes.\n" + ex.Message;
+        }
+        finally
+        {
+            isSaving = false;
         }
     }
 
