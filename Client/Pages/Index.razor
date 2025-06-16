@@ -133,11 +133,9 @@ else
         errorMessage = null;
         try
         {
-            foreach (var book in books)
+            foreach (var book in books.Where(b => b.IsDirty))
             {
-                // Always update for demo; optimize by tracking IsDirty if needed
                 var url = $"https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books/BookID/{book.BookID}";
-                // Debug: log the JSON payload
                 var bookData = new {
                     Title = book.Title,
                     Author = book.Author,
@@ -155,6 +153,7 @@ else
                     errorMessage = $"Failed to update BookID {book.BookID}: {response.ReasonPhrase}";
                     break;
                 }
+                book.IsDirty = false;
             }
         }
         catch (Exception ex)
