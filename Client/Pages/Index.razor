@@ -66,7 +66,7 @@ else
                     <td>@books[i].Author</td>
                     <td>@books[i].Genre</td>
                     <td>
-                        <input type="checkbox" checked="@books[i].ReadStatusBool" @onchange="(e) => OnReadStatusChanged(i, e.Value)" />
+                        <input type="checkbox" @bind="books[i].ReadStatusBool" />
                     </td>
                     <td>@books[i].Description</td>
                 </tr>
@@ -87,10 +87,19 @@ else
 
     public class BookEditable : Book
     {
+        private bool _readStatusBool;
         public bool ReadStatusBool
         {
             get => !string.IsNullOrWhiteSpace(ReadStatus) && ReadStatus.Trim().Equals("read", StringComparison.OrdinalIgnoreCase);
-            set => ReadStatus = value ? "Read" : "Unread";
+            set
+            {
+                var newStatus = value ? "Read" : "Unread";
+                if (ReadStatus != newStatus)
+                {
+                    ReadStatus = newStatus;
+                    IsDirty = true;
+                }
+            }
         }
         public bool IsDirty { get; set; } = false;
     }
