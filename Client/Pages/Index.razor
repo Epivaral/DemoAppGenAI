@@ -134,9 +134,7 @@ else
             {
                 // Always update for demo; optimize by tracking IsDirty if needed
                 var url = $"https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books/BookID/{book.BookID}";
-                var bookData = new Book
-                {
-                    BookID = book.BookID,
+                var bookData = new {
                     Title = book.Title,
                     Author = book.Author,
                     Genre = book.Genre,
