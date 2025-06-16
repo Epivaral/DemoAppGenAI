@@ -137,6 +137,16 @@ Ask Copilot to update the Blazor table to display these images. If an image is m
   ```
 - Add search, update, or other features as desired.
 
+#### Other UI & API Improvements
+- Sticky, dark title bar at the very top (no padding).
+- Message and SAVE button are horizontally aligned with the table.
+- SAVE button uses a dark, harmonious color distinct from the title bar.
+- Checkboxes are editable; users can toggle read/unread status.
+- On SAVE, all books are updated via individual PUT requests to the API.
+- Only the allowed fields (`Title`, `Author`, `Genre`, `ReadStatus`, `Description`) are sent in the PUT body.
+- The app is robust against API requirements (case sensitivity, field presence).
+- The site title is updated to "My Personal Book Collection".
+
 ---
 
 ## Final Result

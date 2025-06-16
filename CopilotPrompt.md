@@ -144,6 +144,34 @@ This file summarizes the key steps and prompts from a real GitHub Copilot Chat s
 
 ---
 
+### 12. Add Update Functionality
+
+**Prompt:**
+> Can you make the checkboxes updatable, and use the same API to update the read status, also a SAVE button above the table.
+
+**Issue & Solution:**
+- Initial attempts to update only changed books caused issues with Blazor's binding and dirty tracking. Rolled back to updating all books on SAVE for reliability.
+- Fixed API payload to only send allowed fields and correct case for `ReadStatus`.
+- Used a foreach loop for table rendering to avoid Blazor binding errors.
+- Ensured checkboxes are editable and SAVE button updates all records.
+
+---
+
+### 13. UI Polish and Sticky Title
+
+**Prompt:**
+> 1. can you update the UI so the title is padded at the top of the page.
+> 2. make the message: You can update the read status of the books below and click SAVE to apply changes, and SAVE buttom to be aligned with the table.
+> 3. make the SAVE button dark with light text, but different color from the title, but still in armony with overall look
+
+**Issue & Solution:**
+- Added extra top padding to the title, then made it sticky at the very top with no padding as requested.
+- Aligned the message and SAVE button horizontally with the table using flexbox.
+- Styled the SAVE button with a dark color distinct from the title bar, matching the overall look.
+- Updated the site title in the browser tab.
+
+---
+
 ## How to Use This File
 
 - Each section shows a real user prompt, the resulting feature or change, and how issues were resolved.
