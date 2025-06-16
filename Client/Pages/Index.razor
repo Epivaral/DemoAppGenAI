@@ -140,7 +140,7 @@ else
                     Title = book.Title,
                     Author = book.Author,
                     Genre = book.Genre,
-                    ReadStatus = book.ReadStatus,
+                    ReadStatus = book.ReadStatus?.ToLower(),
                     Description = book.Description
                 };
                 var json = JsonSerializer.Serialize(bookData);
