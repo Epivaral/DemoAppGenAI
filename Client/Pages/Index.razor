@@ -174,7 +174,11 @@ else
     private void OnReadStatusChanged(int index, object value)
     {
         if (books == null || index < 0 || index >= books.Count) return;
-        bool isChecked = value is bool b && b;
+        bool isChecked = false;
+        if (value is bool b)
+            isChecked = b;
+        else if (value is string s && bool.TryParse(s, out var parsed))
+            isChecked = parsed;
         books[index].ReadStatusBool = isChecked;
         books[index].IsDirty = true;
         StateHasChanged();
