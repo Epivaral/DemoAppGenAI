@@ -2,6 +2,8 @@
 @using Client.Models
 @using System.Net.Http.Json
 @using System.Text.Json
+@using System.Net.Http;
+@using System.Text;
 @inject HttpClient Http
 
 <h1 class="cool-title">My Personal Book Collection</h1>
@@ -143,9 +145,11 @@ else
                     ReadStatus = book.ReadStatus?.ToLower(),
                     Description = book.Description
                 };
-                var json = JsonSerializer.Serialize(bookData);
+                var options = new JsonSerializerOptions { PropertyNamingPolicy = null };
+                var json = JsonSerializer.Serialize(bookData, options);
                 Console.WriteLine($"PUT payload for BookID {book.BookID}: {json}");
-                var response = await Http.PutAsJsonAsync(url, bookData);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await Http.PutAsync(url, content);
                 if (!response.IsSuccessStatusCode)
                 {
                     errorMessage = $"Failed to update BookID {book.BookID}: {response.ReasonPhrase}";
