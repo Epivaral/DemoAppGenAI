@@ -46,7 +46,7 @@ else
                     <td>@book.Author</td>
                     <td>@book.Genre</td>
                     <td>
-                        <input type="checkbox" disabled @checked="book.ReadStatus != null && book.ReadStatus.ToLower() == \"read\"" />
+                        <input type="checkbox" disabled @checked="IsRead(book.ReadStatus)" />
                     </td>
                     <td>@book.Description</td>
                 </tr>
@@ -62,6 +62,12 @@ else
 
     public class ApiResponse {
         public List<Book> value { get; set; }
+    }
+
+    private bool IsRead(string readStatus)
+    {
+        return !string.IsNullOrWhiteSpace(readStatus) &&
+               readStatus.Trim().Equals("read", StringComparison.OrdinalIgnoreCase);
     }
 
     protected override async Task OnInitializedAsync()
