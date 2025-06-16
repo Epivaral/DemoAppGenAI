@@ -46,7 +46,7 @@ else
                     <td>@book.Author</td>
                     <td>@book.Genre</td>
                     <td>
-                        <input type="checkbox" disabled @checked="IsRead(book.ReadStatus)" />
+                        <input type="checkbox" disabled checked="@IsRead(book.ReadStatus)" />
                     </td>
                     <td>@book.Description</td>
                 </tr>
