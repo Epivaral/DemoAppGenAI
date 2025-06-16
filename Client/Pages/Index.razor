@@ -8,10 +8,15 @@
 @if (errorMessage != null)
 {
     <div style="color:red">@errorMessage</div>
+    <button class="btn btn-primary" @onclick="ReloadBooks">Retry</button>
+}
+else if (isLoading)
+{
+    <p>Loading...</p>
 }
 else if (books == null)
 {
-    <p>Loading...</p>
+    <p>No books found.</p>
 }
 else if (!books.Any())
 {
@@ -53,6 +58,7 @@ else
 @code {
     private List<Book> books;
     private string errorMessage;
+    private bool isLoading = true;
 
     public class ApiResponse {
         public List<Book> value { get; set; }
@@ -60,16 +66,31 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        await LoadBooksAsync();
+    }
+
+    private async Task LoadBooksAsync()
+    {
+        isLoading = true;
+        errorMessage = null;
         try
         {
             var response = await Http.GetFromJsonAsync<ApiResponse>("https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books");
             books = response?.value ?? new List<Book>();
-            errorMessage = null;
         }
         catch (Exception ex)
         {
-            errorMessage = ex.Message;
-            books = new List<Book>();
+            errorMessage = "Failed to load books. Please try again.\n" + ex.Message;
+            books = null;
         }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task ReloadBooks()
+    {
+        await LoadBooksAsync();
     }
 }

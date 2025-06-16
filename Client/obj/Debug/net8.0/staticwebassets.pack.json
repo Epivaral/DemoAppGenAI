@@ -9,6 +9,66 @@
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
     },
     {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/1984.png",
+      "PackagePath": "staticwebassets/images/1984.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/Animal_Farm.png",
+      "PackagePath": "staticwebassets/images/Animal_Farm.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/Brave_New_World.png",
+      "PackagePath": "staticwebassets/images/Brave_New_World.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/Jane_Eyre.png",
+      "PackagePath": "staticwebassets/images/Jane_Eyre.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/Moby_Dick.png",
+      "PackagePath": "staticwebassets/images/Moby_Dick.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/Pride_and_Prejudice.png",
+      "PackagePath": "staticwebassets/images/Pride_and_Prejudice.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Alchemist.png",
+      "PackagePath": "staticwebassets/images/The_Alchemist.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Catcher_in_the_Rye.png",
+      "PackagePath": "staticwebassets/images/The_Catcher_in_the_Rye.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Chronicles_of_Narnia.png",
+      "PackagePath": "staticwebassets/images/The_Chronicles_of_Narnia.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Great_Gatsby.png",
+      "PackagePath": "staticwebassets/images/The_Great_Gatsby.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Kite_Runner.png",
+      "PackagePath": "staticwebassets/images/The_Kite_Runner.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Little_Prince.png",
+      "PackagePath": "staticwebassets/images/The_Little_Prince.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/The_Lord_of_the_Rings.png",
+      "PackagePath": "staticwebassets/images/The_Lord_of_the_Rings.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/To_Kill_a_Mockingbird.png",
+      "PackagePath": "staticwebassets/images/To_Kill_a_Mockingbird.png"
+    },
+    {
+      "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/images/Wuthering_Heights.png",
+      "PackagePath": "staticwebassets/images/Wuthering_Heights.png"
+    },
+    {
       "Id": "/workspaces/DemoAppGenAI/Client/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },
