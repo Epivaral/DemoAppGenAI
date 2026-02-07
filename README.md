@@ -4,9 +4,6 @@
 
 ![Booksapp Screenshot](Page.png)
 
-## Live Demo & API
-- **Site:** <a href="https://lemon-pebble-088965b1e.1.azurestaticapps.net/" target="_blank">https://lemon-pebble-088965b1e.1.azurestaticapps.net/</a>
-- **Data API:** <a href="https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books" target="_blank">https://lemon-pebble-088965b1e.1.azurestaticapps.net/data-api/api/Books</a>
 
 ## Overview
 
